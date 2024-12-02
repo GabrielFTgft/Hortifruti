@@ -4,6 +4,11 @@ from django.template import loader
 from .models import Produto
 
 def produtos(request):
+    cliente_id = request.session.get('cliente_id')
+    if not cliente_id:
+        messages.error(request, "Você precisa estar logado para acessar esta página.")
+        return redirect('login')
+
     produtos = Produto.objects.all()
     template = loader.get_template('produtos.html')
     context = {
