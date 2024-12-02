@@ -1,1 +1,15 @@
-Hellllllo
+<html>
+
+<body>
+    <h1>Lista de Produtos</h1>
+    <ul>
+        {% for produto in produtos %}
+        <li>{{ produto.nome }} - R$ {{ produto.preco }} - Estoque: {{ produto.estoque }} - <img
+                src="{{ produto.imagem.url }}" alt="{{ produto.nome }}"> </li>
+        {% empty %}
+        <li>Não há produtos disponíveis.</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
