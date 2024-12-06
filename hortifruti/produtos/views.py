@@ -16,3 +16,7 @@ def produtos(request):
         'produtos': produtos,
     }
     return HttpResponse(template.render(context, request))
+
+def redirect_carrinho(request):
+    print("TESTE")
+    return redirect('pedidos')
