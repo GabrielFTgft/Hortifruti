@@ -4,13 +4,13 @@
 
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 
 <body>
     <div class="container">
         <h1>Bem-vindo!</h1>
-        <img src="{% static 'login.png' %}" alt="Frutas" style="width: 100%; height: auto;">
+        <img src="{% static 'img/login.png' %}" alt="Frutas" style="width: 100%; height: auto;">
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
             <label for="email">Email:</label>
@@ -21,7 +21,7 @@
 
             <button type="submit">Entrar</button>
             <a href="{% url 'cadastro' %}">
-                <button type="button">Registrar</button>
+                <button>Registrar</button>
             </a>
         </form>
     </div>

@@ -1,14 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Loja de Frutas</title>
+    <link rel="stylesheet" href="{% static 'css/carrinho.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="{% static 'js/carrinho.js' %}" defer></script>
 </head>
 
 <body>
-    carrinho
+    <header>
+        <a href="{% url 'principal' %}"><button><img src="{% static 'logo.png' %}" alt="Logo"/></button></a>
+        <input type="text" placeholder="Buscar frutas..."/>
+        <div class="user-info">
+            <span>Bem-vindo, Gabriel</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{% static 'apple.png' %}" alt="Maçã Argentina">
+                <h3>Maçã Argentina</h3>
+                <p>R$ 3,00 <span class="item-weight">0,100/Kg</span></p>
+                <div class="qtd-item">
+                    <p>Quantidade</p>
+                    <div class="modify-qtd">
+                        <button><i class="bi bi-plus"></i></button>
+                        <input class="qtd" value="0" readonly></input>
+                        <button><i class="bi bi-dash"></i></button>
+                    </div>
+                </div>
+                <button class="remove-item">Remover</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Hortifruti - Todos os direitos reservados.</p>
+        <p>Desenvolvido por Cauã, Gabriel e Mardem</p>
+    </footer>
 </body>
 
 </html>
