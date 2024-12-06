@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Produto
+from django.contrib import messages
 
 def produtos(request):
     cliente_id = request.session.get('cliente_id')

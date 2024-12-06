@@ -27,7 +27,7 @@ def login(request):
             messages.error(request, 'Usuário não encontrado.')
 
     # Renderiza a página de login se for um GET ou se houver erro
-    return render(request, 'login.html')
+    return render(request, 'login2.html')
 
 # Cadastro
 def cadastro(request):
@@ -49,7 +49,7 @@ def cadastro(request):
             messages.error(request, 'Erro ao cadastrar usuário.')
         return redirect('login')
 
-    return render(request, 'cadastro.html')
+    return render(request, 'cadastro2.html')
 
 def principal(request):
     return render(request, 'principal.html')

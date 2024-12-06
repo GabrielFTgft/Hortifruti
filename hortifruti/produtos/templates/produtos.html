@@ -1,15 +1,44 @@
-<html>
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Frutas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles_produtos.css' %}">
+</head>
 
 <body>
-    <h1>Lista de Produtos</h1>
-    <ul>
-        {% for produto in produtos %}
-        <li>{{ produto.nome }} - R$ {{ produto.preco }} - Estoque: {{ produto.estoque }} - <img
-                src="{{ produto.imagem.url }}" alt="{{ produto.nome }}"> </li>
-        {% empty %}
-        <li>Não há produtos disponíveis.</li>
-        {% endfor %}
-    </ul>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'logo.png' %}" alt="Logo" />
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar frutas..." />
+        </div>
+        <div class="user-info">
+            <span><i class="cart-icon">🛒</i> Meu Carrinho</span>
+            <span>Bem-vindo, Gabriel</span>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{% static 'apple.png' %}" alt="Maçã Argentina">
+                <h3>Maçã Argentina</h3>
+                <p>R$ 3,00 <span>0,100/Kg</span></p>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Hortifruti - Todos os direitos reservados.</p>
+        <p>Desenvolvido por Cauã, Gabriel e Mardem</p>
+    </footer>
 </body>
 
 </html>
