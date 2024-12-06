@@ -9,7 +9,7 @@ class Pedido(models.Model):
     endereco = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.id
+        return f"{self.id}"
 
 class ItemPedido(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name='itens')  # Pedido associado

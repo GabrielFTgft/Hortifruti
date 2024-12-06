@@ -51,3 +51,27 @@ def adicionar_ao_carrinho(request, produto_id):
 
     messages.success(request, f'{produto.nome} foi adicionado ao carrinho.')
     return redirect('produtos')  # Redireciona de volta para a página de produtos
+
+def mostrar_carrinho(request):
+    cliente_id = request.session.get('cliente_id')  
+    if not cliente_id:
+        messages.error(request, 'Você precisa estar logado para adicionar itens ao carrinho.')
+        return redirect('login')
+
+    # pedido_id = request.session.get('pedido_id')  
+    pedido_id = 1
+    if pedido_id:
+        pedido = Pedido.objects.filter(id=pedido_id, finalizado=False).first()
+    else:
+        return
+        # return render(request, "carrinho.html")
+    
+    itens_pedido = ItemPedido.objects.filter(pedido=pedido)
+
+    print(itens_pedido)
+
+    template = loader.get_template('carrinho.html')
+    context = {
+        'itensPedido': itens_pedido,
+    }
+    return HttpResponse(template.render(context, request))

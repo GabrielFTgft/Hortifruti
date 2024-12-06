@@ -7,4 +7,4 @@ class Produto(models.Model):
     estoque = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.nome
+        return f"{self.nome}"
