@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja de Frutas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'styles_produtos.css' %}">
+    <link rel="stylesheet" href="{% static 'styles_p.css' %}">
 </head>
 
 <body>
@@ -26,11 +26,15 @@
 
     <main class="main-content">
         <div class="product-grid">
+            {% for produto in produtos %}
             <div class="product-card">
                 <img src="{% static 'apple.png' %}" alt="Maçã Argentina">
-                <h3>Maçã Argentina</h3>
-                <p>R$ 3,00 <span>0,100/Kg</span></p>
+                <h3>{{produto.nome}}</h3>
+                <p>R$ {{produto.preco}} <span>{{produto.estoque}} qtd</span></p>
                 <button class="add-to-cart">Adicionar</button>
+                {% empty %}
+                <li>Não há produtos disponíveis.</li>
+                {% endfor %}
             </div>
         </div>
     </main>
