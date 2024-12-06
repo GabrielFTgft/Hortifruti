@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja de Frutas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'styles_p.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_p.css' %}">
 </head>
 
 <body>
     <header class="header">
         <div class="logo">
-            <img src="{% static 'logo.png' %}" alt="Logo" />
+            <img src="{% static 'img/logo.png' %}" alt="Logo" />
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Buscar frutas..." />
@@ -28,7 +28,7 @@
         <div class="product-grid">
             {% for produto in produtos %}
             <div class="product-card">
-                <img src="{% static 'apple.png' %}" alt="Maçã Argentina">
+                <img src="{% static 'img/apple.png' %}" alt="Maçã Argentina">
                 <h3>{{produto.nome}}</h3>
                 <p>R$ {{produto.preco}} <span>{{produto.estoque}} qtd</span></p>
                 <button class="add-to-cart">Adicionar</button>
