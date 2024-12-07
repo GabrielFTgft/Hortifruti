@@ -12,7 +12,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #a8df65;
+    background-color: #0f7505;
     padding: 15px 20px;
 }
 
@@ -20,30 +20,20 @@ header img {
     height: 60px;
 }
 
-header input {
-    width: 400px;
-    padding: 10px;
-    border-radius: 25px;
+header h3 {
+    color: #fdfdfd;
+}
+
+header button {
+    background-color: #12d600;
     border: none;
-}
-
-.user-info {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    font-size: 16px;
-}
-
-header i {
+    font-size: 20px;
+    width: 100px;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 20px;
     cursor: pointer;
-    font-size: larger;
-    transition: .4s;
-
-}
-
-header i:hover {
-    margin-right: 3px;
-    margin-bottom: 3px;
+    transition: 0.3s ease;
 }
 
 main {
@@ -52,7 +42,7 @@ main {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fill, 210px);
     gap: 20px;
 }
 
@@ -121,21 +111,21 @@ main {
 }
 
 .remove-item:hover {
-    background-color: #86b852;
+    opacity: 0.8;
 }
 
 /* Rodapé */
 .footer {
-    background-color: #4caf50;
-    color: #fff;
+    background-color: #0f7505;
+    color: #fdfdfd;
     text-align: center;
-    padding: 15px 0;
-    position: fixed;
+    padding: 6px 0;
     width: 100%;
+    position: fixed;
     bottom: 0;
 }
 
 .footer p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 12px;
 }

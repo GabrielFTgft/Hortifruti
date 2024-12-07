@@ -1,37 +1,4 @@
 // Funções
-
-
-
-// Eventos
-
-document.addEventListener("click", (e) => {
-    const targetEl = e.target;
-    const parentEl = targetEl.closest(".product-card");
-    // o pai será o cartão do produto
-    let qtd;
-
-    if (parentEl && parentEl.querySelector(".qtd"))
-        qtd = Number(parentEl.querySelector(".qtd").value);
-
-    if (targetEl.classList.contains("bi-plus") && qtd < 99) {
-        qtd += 1;
-        parentEl.querySelector(".qtd").value = qtd;
-        atualizarQuantidade(parentEl.dataset.itemId, qtd);
-    }
-
-    else if (targetEl.classList.contains("bi-dash") && qtd > 0) {
-        qtd -= 1;
-        parentEl.querySelector(".qtd").value = qtd;
-        atualizarQuantidade(parentEl.dataset.itemId, qtd);
-    }
-
-    //acho que não vai precisar
-    // if(targetEl.classList.contains("remove-item")) {
-    //     // remover item do BD
-
-    // }
-});
-
 function getCSRFToken() {
     const csrfToken = document.cookie.split(';')
         .find(cookie => cookie.trim().startsWith('csrftoken='));
@@ -69,3 +36,32 @@ function atualizarQuantidade(item_id, quantidade) {
             console.error("Erro ao atualizar quantidade:", error);
         });
 }
+
+// Eventos
+document.addEventListener("click", (e) => {
+    const targetEl = e.target;
+    const parentEl = targetEl.closest(".product-card");
+    // o pai será o cartão do produto
+    let qtd;
+
+    if(parentEl && parentEl.querySelector(".qtd"))
+        qtd = Number(parentEl.querySelector(".qtd").value);
+
+    if(targetEl.classList.contains("bi-plus") && qtd < 99) {
+        qtd += 1;
+        parentEl.querySelector(".qtd").value = qtd;
+        atualizarQuantidade(parentEl.dataset.itemId, qtd);
+    }
+
+    else if(targetEl.classList.contains("bi-dash") && qtd > 0) {
+        qtd -= 1;
+        parentEl.querySelector(".qtd").value = qtd;
+        atualizarQuantidade(parentEl.dataset.itemId, qtd);
+    }
+
+    //acho que não vai precisar
+    // if(targetEl.classList.contains("remove-item")) {
+    //     // remover item do BD
+
+    // }
+});

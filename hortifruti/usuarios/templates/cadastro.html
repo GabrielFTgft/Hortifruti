@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo!</title>
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+</head>
+
+<body>
+    <div class="image-section">
+        <img src="{% static 'img/frutas.png'%}" alt="Frutas em uma feira" />
+    </div>
+    <div class="form-section">
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" />
+        </div>
+        <form action="{% url 'cadastro' %}" method="POST">
+            {% csrf_token %}
+            <div class="inputs">
+                <input type="nome" id="nome" name="nome" placeholder="Digite seu nome" required />
+
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
+
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
+            </div>
+            <div class="buttons">
+                <a href="{% url 'login' %}"><button>Cancelar</button></a>
+
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

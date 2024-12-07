@@ -13,11 +13,12 @@
 
 <body>
     <header>
-        <a href="{% url 'principal' %}"><button><img src="{% static 'img/logo.png' %}" alt="Logo" /></button></a>
-        <input type="text" placeholder="Buscar frutas..." />
-        <div class="user-info">
-            <span>Bem-vindo, Gabriel</span>
-        </div>
+        <a href="{% url 'principal' %}"><img src="{% static 'img/logo.png' %}" alt="Logo"/></a>
+        <h3>Total do Pedido: R$ {{ total }}</h3>
+        <form method="POST" action="{% url 'finalizar_ordem' %}">
+            {% csrf_token %}
+            <button type="submit" class="finalize-order-button">Finalizar Pedido</button>
+        </form>
     </header>
 
     <main>
@@ -26,7 +27,7 @@
             <div class="product-card" data-item-id="{{ item.id }}">
                 <img src="{{item.produto.imagem}}" alt="Maçã Argentina">
                 <h3>{{itensPedido.produto.nome}}</h3>
-                <p>R$ {{item.total}}<span class="item-price"></span></p>
+                <p>R$ {{item.total}}</p>
                 <div class="qtd-item">
                     <p>Quantidade</p>
                     <div class="modify-qtd">
@@ -41,13 +42,6 @@
                 </form>
             </div>
             {% endfor %}
-        </div>
-        <div class="cart-summary">
-            <h3>Total do Pedido: R$ {{ total }}</h3>
-            <form method="POST" action="{% url 'finalizar_ordem' %}">
-                {% csrf_token %}
-                <button type="submit" class="finalize-order-button">Finalizar Pedido</button>
-            </form>
         </div>
     </main>
 

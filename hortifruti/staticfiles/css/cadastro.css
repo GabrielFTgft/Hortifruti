@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Helvetica';
 }
 
 body {
@@ -9,22 +10,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
-}
-
-.container {
-    font-family: 'Trebuchet MS', sans-serif;
-    display: flex;
     width: 100vw;
-    height: 100vh;
-    background-color: white;
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .image-section {
     flex: 1;
+    height: 100vh;
 }
 
 .image-section img {
@@ -33,15 +25,10 @@ body {
     object-fit: cover;
 }
 
-.frase {
-    font-family: fantasy;
-    font-size: 18px;
-    color: #142303
-}
-
 .form-section {
     flex: 1;
-    background-color: #ABFE4B;
+    height: 100vh;
+    background-color: #88ff00;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -53,21 +40,10 @@ body {
     width: 200px;
 }
 
-form {
-    margin-bottom: 180px;
-}
-
 form .inputs input {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-
-form label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
 }
 
 form input {
@@ -75,19 +51,18 @@ form input {
     width: 400px;
     padding: 10px;
     margin-bottom: 35px;
-    border: 1px solid #ddd;
     border-radius: 20px;
+    border: none;
     font-size: 12px;
 }
 
 form input::placeholder {
-    color: #000000;
-    font-family: "Roboto";
+    color: #aaa
 }
 
 form input:focus {
     outline: none;
-    border-color: #00aaff;
+    border-color: #12d600;
 }
 
 .buttons {
@@ -99,7 +74,6 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Roboto";
     padding: 10px 20px;
     width: 140px;
     height: 50px;
@@ -107,22 +81,14 @@ button {
     border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
-}
-
-.cancel {
     background-color: #142303;
     color: white;
 }
 
-.cancel:hover {
-    background-color: #339933;
+a {
+    text-decoration: none;
 }
 
-.register {
-    background-color: #142303;
-    color: white;
-}
-
-.register:hover {
+button:hover {
     background-color: #339933;
 }
