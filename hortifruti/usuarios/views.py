@@ -18,6 +18,8 @@ def login(request):
             if cliente.senha == senha:
                  # Armazena o ID do cliente na sessão
                 request.session['cliente_id'] = cliente.id
+                request.session['cliente_nome'] = cliente.nome
+
                 # Redireciona para a página de produtos (ou outra página principal)
                 return redirect('produtos')
             else:

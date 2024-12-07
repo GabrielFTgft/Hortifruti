@@ -67,30 +67,35 @@ def mostrar_carrinho(request):
         # return render(request, "carrinho.html")
     
     itens_pedido = ItemPedido.objects.filter(pedido=pedido)
-
-    print(itens_pedido)
+    total = 0
+    for item in itens_pedido:
+        item.total = round(item.quantidade * item.produto.preco, 2)
+        total += item.total
+    total = round(total, 2)
 
     template = loader.get_template('carrinho.html')
     context = {
         'itensPedido': itens_pedido,
+        'total':total,
     }
     return HttpResponse(template.render(context, request))
 
-def alterar_item_carrinho(request, item_id):
+def alterar_item_carrinho(request, item_id, quantidade):
     item_pedido = get_object_or_404(ItemPedido, id=item_id)
-    if request.method == "POST":
-        quantity = int(request.POST.get("quantity", 1))
+    if request.method == "PUT":
+        quantity = quantidade
+        # quantity = int(request.POST.get("quantity", 1))
         if quantity > 0:
             item_pedido.quantity = quantity
             item_pedido.save()
         else:
             item_pedido.delete()  # Remove o item se a quantidade for 0
-    return redirect("carrinho.html")
+    return redirect("carrinho")
 
 def deletar_item_carrinho(request, item_id):
     item_pedido = get_object_or_404(ItemPedido, id=item_id)
     item_pedido.delete()
-    return redirect("carrinho.html")
+    return redirect("carrinho")
 
 def finalizar_ordem(request):
     if request.method == "POST":
@@ -102,5 +107,5 @@ def finalizar_ordem(request):
 
             
             del request.session['pedido_id']
-        return redirect('produtos.html')
+        return redirect('produtos')
         
