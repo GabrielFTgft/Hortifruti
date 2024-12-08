@@ -1,7 +1,6 @@
 const popUp = document.querySelector("#pop-up");
 
 document.addEventListener("click", (e) => {
-    console.log("clique");
     const targetEl = e.target;
     // o pai será o cartão do produto
 
@@ -14,7 +13,7 @@ document.addEventListener("click", (e) => {
 
         const template = `
         <div class="add-card" data-item-id="${parentEl.dataset.itemId}">
-            <button><i class="bi bi-x"></i></button>
+            <div class="cancel"><button><i class="bi bi-x"></i></button></div>
             <img src="${image.src}" alt="${image.alt}">
             <h3>${name.innerText}</h3>
             <p>R$ </p>
@@ -26,7 +25,7 @@ document.addEventListener("click", (e) => {
                     <button><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <form method="POST" action="{% url 'adicionar_ao_carrinho' item.id %}">
+            <form method="POST" action="{% url 'adicionar' item.id %}">
                 {% csrf_token %}
                 <button class="confirm-btn">Confirmar</button>
             </form>

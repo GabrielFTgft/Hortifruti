@@ -1,7 +1,6 @@
 const popUp = document.querySelector("#pop-up");
 
 document.addEventListener("click", (e) => {
-    console.log("clique");
     const targetEl = e.target;
     // o pai será o cartão do produto
 
@@ -26,7 +25,7 @@ document.addEventListener("click", (e) => {
                     <button><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <form method="POST" action="{% url 'adicionar_ao_carrinho' item.id %}">
+            <form method="POST" action="{% url 'adicionar' item.id %}">
                 {% csrf_token %}
                 <button class="confirm-btn">Confirmar</button>
             </form>

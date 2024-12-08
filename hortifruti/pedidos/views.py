@@ -80,13 +80,14 @@ def mostrar_carrinho(request):
     }
     return HttpResponse(template.render(context, request))
 
+#@csrf_exempt 
 def alterar_item_carrinho(request, item_id, quantidade):
     item_pedido = get_object_or_404(ItemPedido, id=item_id)
     if request.method == "PUT":
         quantity = quantidade
         # quantity = int(request.POST.get("quantity", 1))
         if quantity > 0:
-            item_pedido.quantity = quantity
+            item_pedido.quantidade = quantity
             item_pedido.save()
         else:
             item_pedido.delete()  # Remove o item se a quantidade for 0
@@ -103,9 +104,7 @@ def finalizar_ordem(request):
         if pedido_id:
             pedido = Pedido.objects.filter(id=pedido_id, finalizado=False).first()
             pedido.finalizado = True
-            pedido.save()
-
-            
+            pedido.save()   
             del request.session['pedido_id']
         return redirect('produtos')
         
