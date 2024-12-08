@@ -14,6 +14,7 @@ document.addEventListener("click", (e) => {
 
         const template = `
         <div class="add-card" data-item-id="${parentEl.dataset.itemId}">
+            <div class="cancel"><button><i class="bi bi-x"></i></button></div>
             <img src="${image.src}" alt="${image.alt}">
             <h3>${name.innerText}</h3>
             <p>R$ </p>
