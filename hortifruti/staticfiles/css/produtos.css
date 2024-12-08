@@ -134,10 +134,6 @@ main {
     justify-content: right;
 }
 
-.cancel button {
-    
-}
-
 .qtd-item {
     display: flex;
     justify-content: space-around;
