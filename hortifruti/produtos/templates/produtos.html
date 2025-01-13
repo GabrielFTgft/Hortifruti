@@ -1,48 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hortifruti</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        <link rel="stylesheet" href="{% static 'css/produtos.css' %}" />
+        <script src="{% static 'js/produtos.js' %}" defer></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hortifruti</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{% static 'css/produtos.css' %}">
-    <script src="{% static 'js/produtos.js' %}" defer></script>
-</head>
-
-<body>
-    <header>
-        <img src="{% static 'img/logo.png' %}" alt="Logo" />
-        <input type="text" placeholder="Buscar frutas..." />
-        <div class="user-info">
-            <a href="{% url 'carrinho' %}"><button><i class="bi bi-cart"></i></button></a>
-            <p>Bem-vindo, Gabriel</p>
-        </div>
-    </header>
-
-    <main>
-        
-        <dialog id="pop-up"></dialog>
-
-        <div class="product-grid">
-            {% for produto in produtos %}
-            <div class="product-card" data-item-id="{{ item.id }}">
-                <img src="{% static 'img/apple.png' %}" alt={{produto.nome}}>
-                <h3>{{produto.nome}}</h3>
-                <p>R$ {{produto.preco}} <span>un</span></p>
-                <button class="add-item">Adicionar</button>
+    <body>
+        <header>
+            <img src="{% static 'img/logo.png' %}" alt="Logo" />
+            <input type="text" placeholder="Buscar frutas..." />
+            <div class="user-info">
+                <a href="{% url 'carrinho' %}"
+                    ><button><i class="bi bi-cart"></i></button
+                ></a>
+                <p>Bem-vindo</p>
             </div>
+        </header>
+
+        <main>
+            <dialog id="pop-up"></dialog>
+
+            <div class="product-grid">
+                {% for produto in produtos %}
+                <div class="product-card" data-item-id="{{ item.id }}">
+                    <img src="{% static 'img/apple.png' %}" alt="{{produto.nome}}" />
+                    <h3>{{produto.nome}}</h3>
+                    <p>R$ {{produto.preco}} <span>un</span></p>
+                    <button class="add-item">Adicionar</button>
+                </div>
                 {% empty %}
                 <p class="warning">Não há produtos disponíveis.</p>
-            {% endfor %}
-        </div>
-    </main>
+                {% endfor %}
+            </div>
+        </main>
 
-    <footer class="footer">
-        <p>&copy; 2024 Hortifruti - Todos os direitos reservados.</p>
-        <p>Desenvolvido por Cauã, Gabriel e Mardem</p>
-    </footer>
-</body>
-
+        <footer class="footer">
+            <p>&copy; 2024 Hortifruti - Todos os direitos reservados.</p>
+            <p>Desenvolvido por Cauã, Gabriel e Mardem</p>
+        </footer>
+    </body>
 </html>

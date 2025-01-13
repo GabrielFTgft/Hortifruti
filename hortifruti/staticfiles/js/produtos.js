@@ -4,8 +4,7 @@ document.addEventListener("click", (e) => {
     const targetEl = e.target;
     // o pai será o cartão do produto
 
-    if(targetEl.classList.contains("add-item")) {
-        popUp.innerHTML = "";
+    if (targetEl.classList.contains("add-item")) {
         const parentEl = targetEl.closest(".product-card");
 
         const image = parentEl.querySelector("img");
@@ -26,7 +25,6 @@ document.addEventListener("click", (e) => {
                 </div>
             </div>
             <form method="POST" action="{% url 'adicionar' item.id %}">
-                {% csrf_token %}
                 <button class="confirm-btn">Confirmar</button>
             </form>
         </div>
@@ -40,22 +38,23 @@ document.addEventListener("click", (e) => {
         popUp.appendChild(popUpContent);
 
         popUp.showModal();
-    }
-
-    else if(targetEl.classList.contains("bi-plus")) {
+    } else if (targetEl.classList.contains("bi-plus")) {
         const parentEl = targetEl.closest(".add-card");
         let qtd = Number(parentEl.querySelector(".qtd").value);
-        if(qtd < 99)
-            qtd += 1;
+        if (qtd < 99) qtd += 1;
         parentEl.querySelector(".qtd").value = qtd;
-    }
-
-    else if(targetEl.classList.contains("bi-dash")) {
+    } else if (targetEl.classList.contains("bi-dash")) {
         const parentEl = targetEl.closest(".add-card");
         let qtd = Number(parentEl.querySelector(".qtd").value);
-        if(qtd > 0)
-            qtd -= 1;
+        if (qtd > 0) qtd -= 1;
         parentEl.querySelector(".qtd").value = qtd;
+    } else if (targetEl.classList.contains("bi-x")) {
+        popUp.close();
     }
+});
 
-})
+popUp.addEventListener("click", (e) => {
+    const rect = popUp.getBoundingClientRect();
+
+    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) popUp.close();
+});

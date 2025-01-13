@@ -25,8 +25,8 @@
         <div class="product-grid">
             {% for item in itensPedido %}
             <div class="product-card" data-item-id="{{ item.id }}">
-                <img src="{{item.produto.imagem}}" alt="Maçã Argentina">
-                <h3>{{itensPedido.produto.nome}}</h3>
+                <img src="{{item.produto.imagem}}" alt={{item.produto.nome}}>
+                <h3>{{item.produto.nome}}</h3>
                 <p>R$ {{item.total}}</p>
                 <div class="qtd-item">
                     <p>Quantidade</p>

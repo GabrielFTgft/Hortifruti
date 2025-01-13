@@ -99,6 +99,10 @@ main {
     background-color: transparent;
 }
 
+.product-card form {
+    align-self: flex-end;
+}
+
 .remove-item {
     background-color: #0f7505;
     border: none;
