@@ -1,8 +1,28 @@
-// Funções
+const finalizeBtn = document.querySelector("#finalize-order-btn");
+const addressForm = document.querySelector("#address-form");
+const cepInput = document.querySelector("#cep-input");
 
-
+function validDigits(text) {
+    return text.replace(/[^0-9]/g, "");
+    // só aceita dígitos de 0 a 9 e vírgula, o resto substitui por "", o g indica que é global
+}
 
 // Eventos
+finalizeBtn.addEventListener("click", () => {
+    addressForm.showModal();
+});
+
+addressForm.addEventListener("click", (e) => {
+    const rect = addressForm.getBoundingClientRect();
+
+    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) addressForm.close();
+});
+
+cepInput.addEventListener("input", (e) => {
+    const updatedValue = validDigits(e.target.value);
+
+    e.target.value = updatedValue;
+});
 
 document.addEventListener("click", (e) => {
     const targetEl = e.target;
@@ -24,12 +44,6 @@ document.addEventListener("click", (e) => {
         parentEl.querySelector(".qtd").value = qtd;
         atualizarQuantidade(parentEl.dataset.itemId, qtd);
     }
-
-    //acho que não vai precisar
-    // if(targetEl.classList.contains("remove-item")) {
-    //     // remover item do BD
-
-    // }
 });
 
 function getCSRFToken() {

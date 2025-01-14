@@ -1,4 +1,5 @@
 const popUp = document.querySelector("#pop-up");
+const searchInput = document.querySelector("#search-input");
 
 document.addEventListener("click", (e) => {
     const targetEl = e.target;
@@ -9,6 +10,8 @@ document.addEventListener("click", (e) => {
 
         const image = parentEl.querySelector("img");
         const name = parentEl.querySelector("h3");
+
+        popUp.innerHTML = "";
 
         const template = `
         <div class="add-card" data-item-id="${parentEl.dataset.itemId}">
@@ -57,4 +60,20 @@ popUp.addEventListener("click", (e) => {
     const rect = popUp.getBoundingClientRect();
 
     if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) popUp.close();
+});
+
+searchInput.addEventListener("keyup", (e) => {
+    const search = e.target.value;
+    const itens = document.querySelectorAll(".product-card");
+
+    itens.forEach((item) => {
+        let itemName = item.querySelector("h3").innerText.toLowerCase();
+
+        const normalizedSearch = search.toLowerCase();
+
+        item.style.display = "block";
+
+        if(!itemName.includes(normalizedSearch))
+            item.style.display = "none";
+    })
 });

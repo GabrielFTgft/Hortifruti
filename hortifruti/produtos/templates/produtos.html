@@ -13,7 +13,7 @@
     <body>
         <header>
             <img src="{% static 'img/logo.png' %}" alt="Logo" />
-            <input type="text" placeholder="Buscar frutas..." />
+            <input id="search-input" type="text" placeholder="Buscar frutas..." />
             <div class="user-info">
                 <a href="{% url 'carrinho' %}"
                     ><button><i class="bi bi-cart"></i></button
@@ -29,8 +29,10 @@
                 {% for produto in produtos %}
                 <div class="product-card" data-item-id="{{ item.id }}">
                     <img src="{% static 'img/apple.png' %}" alt="{{produto.nome}}" />
-                    <h3>{{produto.nome}}</h3>
-                    <p>R$ {{produto.preco}} <span>un</span></p>
+                    <div>
+                        <h3>{{produto.nome}}</h3>
+                        <p>R$ {{produto.preco}} <span>un</span></p>
+                    </div>
                     <button class="add-item">Adicionar</button>
                 </div>
                 {% empty %}
