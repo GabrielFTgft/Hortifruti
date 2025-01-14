@@ -60,8 +60,8 @@ def mostrar_carrinho(request):
     if pedido_id:
         pedido = Pedido.objects.filter(id=pedido_id, finalizado=False).first()
     else:
-        return
-        # return render(request, "carrinho.html")
+        #return 
+        return render(request, "carrinho.html")
     
     itens_pedido = ItemPedido.objects.filter(pedido=pedido)
     total = 0

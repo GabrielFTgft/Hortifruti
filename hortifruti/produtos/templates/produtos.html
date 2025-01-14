@@ -27,7 +27,7 @@
         <div class="product-grid">
             {% for produto in produtos %}
             <div class="product-card" data-item-id="{{ produto.id }}">
-                <img src="{{produto.imagem}}" alt="{{produto.nome}}" />
+                <img src="{{produto.imagem.url}}" alt="{{produto.nome}}" />
                 <div>
                     <h3>{{produto.nome}}</h3>
                     <p>R$ <strong class="price">{{produto.preco}}</strong><span> un</span></p>
