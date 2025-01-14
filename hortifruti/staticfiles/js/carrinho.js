@@ -64,7 +64,7 @@ function atualizarQuantidade(item_id, quantidade) {
     fetch(`/pedido/carrinho/alterar/${item_id}/${quantidade}/`, {
         method: "PUT",
         headers: {
-            "Content-Type": "applicat'ion/json",
+            "Content-Type": "application/json",
             "X-CSRFToken": csrfToken  // Inclui o CSRF token nos cabeçalhos
         },
         body: JSON.stringify({ quantidade: quantidade })
