@@ -68,7 +68,7 @@ document.addEventListener("click", (e) => {
     else if (targetEl.classList.contains("confirm-btn")) {
         const parentEl = targetEl.closest(".add-card");
         const item_id = parentEl.dataset.itemId;
-        const quantidade = Number(parentEl.querySelector(".qtd").value); // Pega o token CSRF
+        const quantidade = Number(parentEl.querySelector(".qtd").value);
 
         if (!csrfToken) {
             console.error("CSRF token não encontrado!");
@@ -91,7 +91,12 @@ document.addEventListener("click", (e) => {
             })
             .then(data => {
                 console.log("Item adicionado ao carrinho:", data);
-                popUp.close(); // Fecha o pop-up após adicionar
+                const confirmBtn = document.querySelector(".confirm-btn");
+                confirmBtn.innerText = "Adicionado ao carrinho!";
+
+                setTimeout(() => {
+                    popUp.close(); // Fecha o pop-up após adicionar
+                }, 1000);
             })
             .catch(error => {
                 console.error("Erro ao adicionar ao carrinho:", error);
@@ -114,9 +119,9 @@ searchInput.addEventListener("keyup", (e) => {
 
         const normalizedSearch = search.toLowerCase();
 
-        item.style.display = "block";
+        item.style.display = "flex";
 
-        if (!itemName.includes(normalizedSearch))
+        if(!itemName.includes(normalizedSearch))
             item.style.display = "none";
     })
 });

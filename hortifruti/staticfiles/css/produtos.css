@@ -76,6 +76,12 @@ main {
     align-items: center;
 }
 
+.product-card #img-place {
+    height: 180px;
+    display: flex;
+    align-items: center;
+}
+
 .product-card img {
     max-width: 100%;
     border-radius: 10px;
@@ -91,7 +97,7 @@ main {
     margin: 5px 0;
 }
 
-.product-card span {
+.product-card .un {
     font-size: small;
     color: #aaa;
 }
@@ -118,6 +124,7 @@ main {
 /* Pop-up */
 #pop-up {
     top: 50px;
+    min-height: 300px;
     width: 210px;
     margin: auto;
     background-color: #fff;
@@ -130,6 +137,15 @@ main {
 
 #pop-up::backdrop {
     background-color: rgba(128, 128, 128, 0.6);
+}
+
+#pop-up img {
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+#pop-up h3 {
+    margin-bottom: 10px;
 }
 
 .cancel {
@@ -172,7 +188,7 @@ main {
 .confirm-btn {
     background-color: #0f7505;
     border: none;
-    width: 100px;
+    min-width: 100px;
     padding: 10px 15px;
     color: #fff;
     border-radius: 20px;

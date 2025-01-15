@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <a href="{% url 'principal' %}"><img src="{% static 'img/logo.png' %}" alt="Logo" /></a>
+        <a href="{% url 'produtos' %}"><img src="{% static 'img/logo.png' %}" alt="Logo" /></a>
         <h3>Total do Pedido: R$ {{ total }}</h3>
         <button id="finalize-order-btn">Finalizar pedido</button>
     </header>
@@ -23,26 +23,26 @@
             <form action="{% url 'finalizar_ordem' %}" method="POST">
                 {% csrf_token %}
                 <label for="cep">CEP</label>
-                <input type="text" id="cep-input" name="cep-input" placeholder="Ex. 12345000" maxlength="8">
+                <input type="text" id="cep-input" name="cep-input" placeholder="Ex. 12345000" maxlength="8" required>
 
                 <label for="address">Endereço</label>
-                <input type="text" id="address-input" name="address-input">
+                <input type="text" id="address-input" name="address-input" required>
 
                 <label for="number">Número</label>
-                <input type="text" id="number-input" name="number-input" placeholder="número ou s/n">
+                <input type="text" id="number-input" name="number-input" placeholder="número ou s/n" required>
 
                 <label for="comp">Complemento (opcional)</label>
                 <input type="text" id="comp-input" name="comp-input"
                     placeholder="Apartamento, sala, conjunto, edifício, andar, etc.">
 
                 <label for="neighborhood">Bairro</label>
-                <input type="text" id="neighborhood-input" name="neighborhood-input">
+                <input type="text" id="neighborhood-input" name="neighborhood-input" required>
 
                 <label for="city">Cidade</label>
-                <input type="text" id="city-input" name="city-input">
+                <input type="text" id="city-input" name="city-input" required>
 
                 <label for="state">Estado</label>
-                <input type="text" id="state-input" name="state-input">
+                <input type="text" id="state-input" name="state-input" required>
 
                 <div id="buttons">
                     <button id="cancel-btn">Cancelar</button>
@@ -54,7 +54,7 @@
         <div class="product-grid">
             {% for item in itensPedido %}
             <div class="product-card" data-item-id="{{ item.id }}">
-                <img src="{{item.produto.imagem.url}}" alt={{item.produto.nome}}>
+                <div id="img-place"><img src="{{item.produto.imagem.url}}" alt={{item.produto.nome}}></div>
                 <h3>{{item.produto.nome}}</h3>
                 <p>R$ {{item.total}}</p>
                 <div class="qtd-item">

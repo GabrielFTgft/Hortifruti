@@ -1,10 +1,11 @@
 const finalizeBtn = document.querySelector("#finalize-order-btn");
 const addressForm = document.querySelector("#address-form");
 const cepInput = document.querySelector("#cep-input");
+const cancelBtn = document.querySelector("#cancel-btn");
 
 function validDigits(text) {
     return text.replace(/[^0-9]/g, "");
-    // só aceita dígitos de 0 a 9 e vírgula, o resto substitui por "", o g indica que é global
+    // só aceita dígitos de 0 a 9, o resto substitui por "", o g indica que é global
 }
 
 // Eventos
@@ -22,6 +23,12 @@ cepInput.addEventListener("input", (e) => {
     const updatedValue = validDigits(e.target.value);
 
     e.target.value = updatedValue;
+});
+
+cancelBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    addressForm.close();
 });
 
 document.addEventListener("click", (e) => {

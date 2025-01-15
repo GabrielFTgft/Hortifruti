@@ -27,12 +27,12 @@
         <div class="product-grid">
             {% for produto in produtos %}
             <div class="product-card" data-item-id="{{ produto.id }}">
-                <img src="{{produto.imagem.url}}" alt="{{produto.nome}}" />
+                <div id="img-place"><img src="{{produto.imagem.url}}" alt="{{produto.nome}}" /></div>
+                <h3>{{produto.nome}}</h3>
                 <div>
-                    <h3>{{produto.nome}}</h3>
-                    <p>R$ <strong class="price">{{produto.preco}}</strong><span> un</span></p>
+                    <p>R$ <span class="price">{{produto.preco}}</span><span class="un"> un</span></p>
+                    <button class="add-item">Adicionar</button>
                 </div>
-                <button class="add-item">Adicionar</button>
             </div>
             {% empty %}
             <p class="warning">Não há produtos disponíveis.</p>

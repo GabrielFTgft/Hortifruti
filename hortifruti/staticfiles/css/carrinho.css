@@ -57,6 +57,16 @@ main {
     padding: 15px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card #img-place {
+    height: 180px;
+    display: flex;
+    align-items: center;
 }
 
 .product-card img {
@@ -102,10 +112,6 @@ main {
     font-size: 30px;
     border: none;
     background-color: transparent;
-}
-
-.product-card form {
-    align-self: flex-end;
 }
 
 .remove-item {
