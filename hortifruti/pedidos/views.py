@@ -23,6 +23,7 @@ def adicionar_ao_carrinho(request, item_id, quantidade):
             pedido = Pedido.objects.filter(id=pedido_id, cliente_id=cliente_id, finalizado=False).first()
         else:
             pedido = Pedido.objects.create(cliente_id=cliente_id, finalizado=False)
+
             request.session['pedido_id'] = pedido.id
 
         # Obtém o produto
@@ -94,10 +95,29 @@ def deletar_item_carrinho(request, item_id):
     item_pedido.delete()
     return redirect("carrinho")
 
-def finalizar_ordem(request):
+def adicionar_endereco(pedido_id, endereco):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    pedido.endereco = endereco
+    pedido.save()
+
+def finalizar_pedido(request):
     if request.method == "POST":
-        pedido_id = request.session.get('pedido_id')  
+         # Processar os dados do formulário
+        cep = request.POST.get('cep-input')
+        endereco = request.POST.get('address-input')
+        numero = request.POST.get('number-input')
+        complemento = request.POST.get('comp-input')
+        bairro = request.POST.get('neighborhood-input')
+        cidade = request.POST.get('city-input')
+        estado = request.POST.get('state-input')
+
+        if complemento == "":
+            complemento = "Sem complemento"
+
+        endereco_completo = f"{endereco}, {numero}, {complemento}, {bairro}, {cep}, {cidade}, {estado}"
+        pedido_id = request.session.get('pedido_id') 
         if pedido_id:
+            adicionar_endereco(pedido_id, endereco_completo)
             pedido = Pedido.objects.filter(id=pedido_id, finalizado=False).first()
             pedido.finalizado = True
             pedido.save()   

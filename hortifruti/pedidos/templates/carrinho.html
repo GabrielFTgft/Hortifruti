@@ -20,7 +20,7 @@
 
     <main>
         <dialog id="address-form">
-            <form action="{% url 'finalizar_ordem' %}" method="POST">
+            <form action="{% url 'finalizar_pedido' %}" method="POST">
                 {% csrf_token %}
                 <label for="cep">CEP</label>
                 <input type="text" id="cep-input" name="cep-input" placeholder="Ex. 12345000" maxlength="8" required>
