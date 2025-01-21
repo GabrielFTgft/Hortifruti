@@ -1,5 +1,6 @@
 const popUp = document.querySelector("#pop-up");
 const searchInput = document.querySelector("#search-input");
+const logoutBtn = document.querySelector("#logout-btn");
 
 let precoUnico = 0;
 document.addEventListener("click", (e) => {
@@ -102,6 +103,10 @@ document.addEventListener("click", (e) => {
                 console.error("Erro ao adicionar ao carrinho:", error);
             });
     }
+});
+
+logoutBtn.addEventListener("click", (e) => {
+    // remover usuario da sessão
 });
 
 popUp.addEventListener("click", (e) => {

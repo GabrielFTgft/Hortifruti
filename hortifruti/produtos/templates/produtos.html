@@ -13,9 +13,10 @@
 
 <body>
     <header>
-        <img src="{% static 'img/logo.png' %}" alt="Logo" />
+        <img src="{% static 'img/logo.svg' %}" alt="Logo" />
         <input id="search-input" type="text" placeholder="Buscar frutas..." />
         <div class="user-info">
+            <a href="{% url 'login' %}"><button id="logout-btn"><i class="bi bi-box-arrow-left"></i></button></a>
             <a href="{% url 'carrinho' %}"><button><i class="bi bi-cart"></i></button></a>
             <p>Bem-vindo</p>
         </div>

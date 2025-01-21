@@ -15,7 +15,7 @@
     </div>
     <div class="form-section">
         <div class="logo">
-            <img src="{% static 'img/logo.png' %}" alt="Logo" />
+            <img src="{% static 'img/logo.svg' %}" alt="Logo" />
         </div>
         <form action="{% url 'cadastro' %}" method="POST">
             {% csrf_token %}
@@ -27,7 +27,7 @@
                 <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
             </div>
             <div class="buttons">
-                <a href="{% url 'login' %}"><button>Cancelar</button></a>
+                <a href="{% url 'login' %}"><button type="button">Cancelar</button></a>
 
                 <button type="submit">Cadastrar</button>
             </div>

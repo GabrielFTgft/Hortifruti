@@ -62,7 +62,6 @@ form input::placeholder {
 
 form input:focus {
     outline: none;
-    border-color: #12d600;
 }
 
 .buttons {
