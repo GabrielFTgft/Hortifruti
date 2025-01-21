@@ -1,4 +1,5 @@
 {% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -9,13 +10,16 @@
     <link rel="stylesheet" href="{% static 'css/carrinho.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="{% static 'js/carrinho.js' %}" defer></script>
+    {% tailwind_css %}
 </head>
 
 <body>
     <header>
-        <a href="{% url 'produtos' %}"><img src="{% static 'img/logo.svg' %}" alt="Logo" /></a>
-        <h3>Total do Pedido: R$ {{ total }}</h3>
-        <button id="finalize-order-btn">Finalizar pedido</button>
+        <nav class="flex flex-row items-center justify-between">
+            <a href=" {% url 'produtos' %}"><img src="{% static 'img/logo.svg' %}" alt="Logo" /></a>
+            <h3>Total do Pedido: R$ {{ total }}</h3>
+            <button id="finalize-order-btn">Finalizar pedido</button>
+        </nav>
     </header>
 
     <main>
@@ -74,9 +78,33 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2024 Hortifruti - Todos os direitos reservados.</p>
-        <p>Desenvolvido por Cauã, Gabriel e Mardem</p>
+    <footer class="shadow footer">
+        <div class="w-full max-w-full mx-auto ">
+            <div class="sm:flex sm:items-center sm:justify-between p-4">
+                <a class="flex items-center sm:mb-0 space-x-3 rtl:space-x-reverse ">
+                    <span class="self-center text-l font-semibold whitespace-nowrap text-xs">Desenvolvido
+                        por
+                        Cauã, Gabriel e Mardem</span>
+                </a>
+                <ul class="flex flex-wrap items-center text-xs font-medium  sm:mb-0">
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">Privacidade</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">Termos</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contato</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="border-white sm:mx-auto dark:border-white px-4" />
+            <span class="mt-4 block text-xs text-white sm:text-center">&copy; 2024 Hortifruti - Todos
+                os direitos reservados.
+        </div>
     </footer>
 </body>
 

@@ -9,11 +9,10 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #0f7505;
     padding: 15px 20px;
+    max-height: 90px;
+    height: 90px;
 }
 
 header img {
