@@ -55,3 +55,7 @@ def cadastro(request):
 
 def principal(request):
     return render(request, 'principal.html')
+
+def deslogar(request):
+    del request.session['cliente_id']
+    return redirect('login')
