@@ -55,6 +55,28 @@
             </form>
         </dialog>
 
+        <dialog id="warning">
+            <h1>Produto indisponível</h1>
+            <p>Lamentamos informar que não temos essa quantidade de <span id="p_nome"></span> em estoque</p>
+        </dialog>
+
+        {% if abrir_popup %}
+        <script>
+            var p_nome = "{{ p_nome }}"
+            //chama a funcao que faz o pop up
+            const product_name = document.querySelector("#p_nome");
+            warning.showModal();
+            product_name.innerText = p_nome;
+            const promise = Promise.resolve();
+
+            promise.then(() => {
+                setTimeout(() => {
+                    warning.close();
+                }, 3000);
+            });
+        </script>
+        {% endif %}
+
         <div class="product-grid">
             {% for item in itensPedido %}
             <div class="product-card" data-item-id="{{ item.id }}">

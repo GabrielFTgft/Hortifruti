@@ -76,6 +76,13 @@ def mostrar_carrinho(request):
         'itensPedido': itens_pedido,
         'total':total,
     }
+
+    erro = request.GET.get("erro", None)
+    if erro:
+        context.update({
+            "abrir_popup": True,
+            "p_nome": erro,  # Mensagem para exibir no pop-up
+        })
     return HttpResponse(template.render(context, request))
 
 #@csrf_exempt 
@@ -117,6 +124,18 @@ def finalizar_pedido(request):
         endereco_completo = f"{endereco}, {numero}, {complemento}, {bairro}, {cep}, {cidade}, {estado}"
         pedido_id = request.session.get('pedido_id') 
         if pedido_id:
+            pedido = Pedido.objects.filter(id=pedido_id, finalizado=False).first()
+            itens_pedido = ItemPedido.objects.filter(pedido=pedido)
+            for item in itens_pedido:
+                p = item.produto 
+                quantidade = item.quantidade
+                produto = Produto.objects.filter(id=p.id).first()
+                if produto.estoque >= quantidade:
+                    produto.estoque -= quantidade
+                    produto.save()
+                else:
+                    return redirect(f"/pedido/carrinho?erro={str(produto.nome)}")
+
             adicionar_endereco(pedido_id, endereco_completo)
             pedido = Pedido.objects.filter(id=pedido_id, finalizado=False).first()
             pedido.finalizado = True

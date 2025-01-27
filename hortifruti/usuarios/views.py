@@ -53,9 +53,12 @@ def cadastro(request):
 
     return render(request, 'cadastro.html')
 
-def principal(request):
-    return render(request, 'principal.html')
+# def principal(request):
+#     return render(request, 'principal.html')
 
 def deslogar(request):
     del request.session['cliente_id']
+    pedido_id = request.session.get('pedido_id')
+    if pedido_id:
+        del request.session['pedido_id']
     return redirect('login')
